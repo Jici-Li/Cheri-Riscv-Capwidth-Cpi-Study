@@ -1,12 +1,12 @@
 # CHERI RISC-V Capability Width CPI Study
 
-This repository contains a small project studying the **system-level performance overheads of widened CHERI-style capabilities (e.g.,128-bit)** and a lightweight architectural mitigation.
+This project investigates where the performance overhead of 128-bit CHERI capabilities actually comes from, and implements a lightweight RTL-level compression mechanism to reduce memory-bound workloads.
 
 ## Summary
-- Implemented a **32-bit RISC-V** core.
-- Evaluated the overhead of widened capabilities using **gem5**, focusing on **CPI** and cache/memory-pressure regimes.
-- Explored a **fixed-latency write-back stage truncation / bit-masking** mechanism to reshape the memory traffic overhead.
-- Observed an average CPI reduction of **~9.54%** in memory-intensive regimes (project-specific workloads).
+- Implemented a 32-bit RISC-V core with CHERI-style widened capability.
+- Evaluated the CPI behaviour across different memory-pressure using gem5.
+- Shows that performance divergence emerge appears once workloads exceed cache capacity.
+- Explores a mantissa truncation mechanism to rreduce memory-bound workloads.
 
 > Note: Synthesis results (Yosys/Vivado sanity check) show no LUT change across configurations, consistent with an architectural-level modification that primarily affects memory behavior rather than control logic.
 
